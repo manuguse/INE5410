@@ -1,0 +1,11 @@
+# ninja log v5
+4	190	7338695779700795	CMakeFiles/exercicios_1.dir/MinMax.c.obj	9c65c00044a46dee
+3	143	7338703624337553	CMakeFiles/exercicios_1.dir/main.c.obj	104c085398bc94e0
+132	306	7338691741543873	exercicios_1.exe	3fd5bd092574c1c3
+3	161	7338703519145388	CMakeFiles/exercicios_1.dir/SortVector.c.obj	e456839628552c5
+1	147	7338704281285853	build.ninja	2a9c59dc44bed2bc
+1	151	7338704281285853	build.ninja	2a9c59dc44bed2bc
+3	142	7338707512162234	CMakeFiles/exercicios_1.dir/SortVector.c.obj	e456839628552c5
+16	161	7338707512363964	CMakeFiles/exercicios_1.dir/main.c.obj	104c085398bc94e0
+3	133	7338707990421996	CMakeFiles/exercicios_1.dir/SortVector.c.obj	e456839628552c5
+16	160	7338707990701672	CMakeFiles/exercicios_1.dir/main.c.obj	104c085398bc94e0
