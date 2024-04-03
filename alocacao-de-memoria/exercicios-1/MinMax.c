@@ -22,7 +22,7 @@ MinMax *getMinMax(int *vector, int size) {
     return a;
 }
 
-void initVector(int *vector, int size) {
+static void initVector(int *vector, int size) {
     srand ( time(NULL) );
     printf("[ ");
     for (int i = 0; i < size; i++) {
@@ -32,7 +32,7 @@ void initVector(int *vector, int size) {
     printf("]\n");
 }
 
-int min_max() {
+void min_max() {
     int vector[10];
     initVector(vector, 10);
     MinMax *m;
@@ -40,5 +40,4 @@ int min_max() {
     printf("Min: %d\n", m->min);
     printf("Max: %d\n", m->max);
     free(m);
-    return 0;
 }

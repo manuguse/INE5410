@@ -6,4 +6,6 @@ set(CMAKE_C_STANDARD 11)
 add_executable(exercicios_1
         MinMax.c
         SortVector.c
-        main.c)
+        Main.c
+        SortVector.h
+        MinMax.h)
