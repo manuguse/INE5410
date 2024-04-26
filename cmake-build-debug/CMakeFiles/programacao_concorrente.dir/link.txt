@@ -1,0 +1,1 @@
+/usr/bin/cc -g "CMakeFiles/programacao_concorrente.dir/exercicios-de-aula/04-03/Main.c.o" "CMakeFiles/programacao_concorrente.dir/exercicios-de-aula/04-03/MinMax.c.o" "CMakeFiles/programacao_concorrente.dir/exercicios-de-aula/04-03/SortVector.c.o" -o programacao_concorrente 

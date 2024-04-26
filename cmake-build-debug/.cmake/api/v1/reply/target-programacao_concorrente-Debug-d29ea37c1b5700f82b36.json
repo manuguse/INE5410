@@ -2,10 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "programacao_concorrente.exe"
-		},
-		{
-			"path" : "programacao_concorrente.pdb"
+			"path" : "programacao_concorrente"
 		}
 	],
 	"backtrace" : 1,
@@ -52,7 +49,7 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "C:/Users/emanu/Documents/ufsc/programacao-concorrente/exercicios-de-aula/04-03"
+					"path" : "/home/emanuelle/Documents/ufsc/programacao-concorrente/exercicios-de-aula/04-03"
 				}
 			],
 			"language" : "C",
@@ -84,16 +81,12 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
-			},
-			{
-				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
-				"role" : "libraries"
 			}
 		],
 		"language" : "C"
 	},
 	"name" : "programacao_concorrente",
-	"nameOnDisk" : "programacao_concorrente.exe",
+	"nameOnDisk" : "programacao_concorrente",
 	"paths" : 
 	{
 		"build" : ".",
