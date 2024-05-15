@@ -1,3 +1,0 @@
-/home/emanuelle/Documents/ufsc/programacao-concorrente/cmake-build-debug/CMakeFiles/programacao_concorrente.dir
-/home/emanuelle/Documents/ufsc/programacao-concorrente/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/emanuelle/Documents/ufsc/programacao-concorrente/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,10 @@
+make -C exercicio_1             clean
+make[1]: Entering directory '/home/manuguse/docs/AF-semaforo/exercicio_1'
+rm -fr build program
+make[1]: Leaving directory '/home/manuguse/docs/AF-semaforo/exercicio_1'
+make -C exercicio_2             clean
+make[1]: Entering directory '/home/manuguse/docs/AF-semaforo/exercicio_2'
+rm -fr build program
+make[1]: Leaving directory '/home/manuguse/docs/AF-semaforo/exercicio_2'
+cd ..; tar zcf AF-semaforo.tar.gz AF-semaforo
+Criado pacote "/home/manuguse/docs/AF-semaforo.tar.gz" para submissão
