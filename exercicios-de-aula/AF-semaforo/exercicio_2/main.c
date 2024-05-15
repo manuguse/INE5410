@@ -24,17 +24,17 @@ char cabeceiras[2][11] = { { "CONTINENTE" }, { "ILHA" } };
 int total_veiculos;
 int veiculos_turno;
 sem_t sem_ilha, sem_continente, mutex;
+int veiculos_na_ponte = 0;
 
-// ToDo: Adicione aque quaisquer outras variávels globais necessárias.
 /* ---------------------------------------- */
 
 
 /* Inicializa a ponte. */
 void ponte_inicializar() {
 	
-	sem_init(&sem_ilha, 0, veiculos_turno);
-	sem_init(&sem_continente, 0, 0);
-	sem_init(&mutex, 0, 0);
+	sem_init(&sem_ilha, 0, 0);                     // inicializa o semáforo da ilha com 0 (bloqueado)
+	sem_init(&sem_continente, 0, veiculos_turno);  // inicializa o semáforo do continente com o número de veículos por turno (liberado)
+	sem_init(&mutex, 0, 1);                        // inicializa o semáforo binário mutex com 1 (liberado)
 
 	/* Imprime direção inicial da travessia. NÃO REMOVER! */
 	printf("\n[PONTE] *** Novo sentido da travessia: CONTINENTE -> ILHA. ***\n\n");
@@ -43,17 +43,29 @@ void ponte_inicializar() {
 
 /* Função executada pelo veículo para ENTRAR em uma cabeceira da ponte. */
 void ponte_entrar(veiculo_t *v) {
-	
-	// ToDo: IMPLEMENTAR!
+	if (v->cabeceira) {            // se o veículo está na ilha (cabeceira = 1)
+		sem_wait(&sem_ilha); 	   // decrementa o semáforo da ilha (bloqueia o veículo se não houver espaço)
+	} else {					   // se o veículo está no continente
+		sem_wait(&sem_continente); // decrementa o semáforo do continente (bloqueia o veículo se não houver espaço)
+	}
 }
 
 /* Função executada pelo veículo para SAIR de uma cabeceira da ponte. */
 void ponte_sair(veiculo_t *v) {
-
-	// ToDo: IMPLEMENTAR!
-	/* Você deverá imprimir a nova direção da travessia quando for necessário! */	
-	printf("\n[PONTE] *** Novo sentido da travessia: %s -> %s. ***\n\n", cabeceiras[v->cabeceira], cabeceiras[!v->cabeceira]);
-	fflush(stdout);
+	sem_wait(&mutex); // decrementa o semáforo binário mutex
+	veiculos_na_ponte++; // incrementa o número de veículos na ponte
+	if (veiculos_na_ponte == veiculos_turno) { // se o número de veículos na ponte for igual ao número de veículos por turno
+		veiculos_na_ponte = 0; // reseta o número de veículos na ponte
+		printf("\n[PONTE] *** Novo sentido da travessia: %s -> %s. ***\n\n", cabeceiras[v->cabeceira], cabeceiras[!v->cabeceira]);
+		fflush(stdout);
+		for (int i = 0; i < veiculos_turno; i++) { // libera os veículos para atravessar
+			if (v->cabeceira) { // se o veículo está na ilha
+				sem_post(&sem_ilha); // incrementa o semáforo da ilha (libera um veículo para atravessar)
+			} else { // se o veículo está no continente
+				sem_post(&sem_continente); // incrementa o semáforo do continente (libera um veículo para atravessar)
+			}
+		}
+	} sem_post(&mutex); // incrementa o semáforo binário mutex 
 }
 
 /* FINALIZA a ponte. */
