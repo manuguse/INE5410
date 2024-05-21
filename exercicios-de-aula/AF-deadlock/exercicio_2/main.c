@@ -26,17 +26,17 @@ void transferir(conta_t *origem, conta_t *destino, double valor) {
     // fazemos a condição para evitar deadlock
     // dessa forma, a thread que tiver o id menor vai pegar o mutex da conta de id menor
     if (origem->id > destino->id) {
+        pthread_mutex_lock(&origem->mutex);
         pthread_mutex_lock(&destino->mutex);
-        pthread_mutex_lock(&origem->mutex);
     } else {
-        pthread_mutex_lock(&origem->mutex);
-        pthread_mutex_lock(&destino->mutex);  
+        pthread_mutex_lock(&destino->mutex);
+        pthread_mutex_lock(&origem->mutex);  
     }
     
     transferir_unsafe(origem, destino, valor); // faz a transferência
 
-    pthread_mutex_unlock(&origem->mutex);  // libera a conta origem
-    pthread_mutex_unlock(&destino->mutex); // libera a conta destino
+    pthread_mutex_unlock(&origem->mutex);  // libera a conta destino
+    pthread_mutex_unlock(&destino->mutex); // libera a conta origem
 
 }
 
